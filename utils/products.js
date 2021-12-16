@@ -3,7 +3,7 @@ const data = {
     {
       name: "Free Shirt",
       category: "shirts",
-      image: "/image/shirt1/jpg",
+      image: "Images/shirt1.jpg",
       price: 70,
       brand: "Nike",
       rating: 4.5,
@@ -14,7 +14,7 @@ const data = {
     {
       name: "Fit Shirt",
       category: "shirts",
-      image: "/image/shirt2/jpg",
+      image: "Images/shirt2.jpg",
       price: 80,
       brand: "Adidas",
       rating: 4.2,
@@ -25,7 +25,7 @@ const data = {
     {
       name: "Lazy Shirt",
       category: "shirts",
-      image: "/image/shirt3/jpg",
+      image: "Images/shirt3.jpg",
       price: 90,
       brand: "Puma",
       rating: 4.3,
@@ -36,7 +36,7 @@ const data = {
     {
       name: "Fit Pants",
       category: "pants",
-      image: "/image/pant1/jpg",
+      image: "Images/pants1.jpg",
       price: 40,
       brand: "puma",
       rating: 4.7,
@@ -47,7 +47,7 @@ const data = {
     {
       name: "Golf Pants",
       category: "pants",
-      image: "/image/pant2/jpg",
+      image: "Images/pants2.jpg",
       price: 50,
       brand: "Adidas",
       rating: 4.1,
@@ -58,7 +58,7 @@ const data = {
     {
       name: "Biker Pants",
       category: "zara",
-      image: "/image/pant3/jpg",
+      image: "Images/pants3.jpg",
       price: 60,
       brand: "Nike",
       rating: 4.5,
@@ -68,3 +68,5 @@ const data = {
     },
   ],
 };
+
+export default data;

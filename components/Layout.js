@@ -1,7 +1,8 @@
-import { Container, AppBar, Typography, Toolbar } from "@mui/material";
+import { Container, AppBar, Typography, Toolbar, Link } from "@mui/material";
 import Head from "next/head";
 import React from "react";
 import Footer from "./Footer/Footer";
+import NextLink from "next/link";
 
 const Layout = ({ children }) => {
   return (
@@ -11,7 +12,28 @@ const Layout = ({ children }) => {
       </Head>
       <AppBar sx={{ backgroundColor: "black" }} position="static">
         <Toolbar>
-          <Typography>Next Store</Typography>
+          <NextLink href="/" passHref>
+            <Link>
+              <Typography
+                sx={{ color: "red", fontWeight: "bold", fontSize: "25px" }}
+              >
+                Next Store
+              </Typography>
+            </Link>
+          </NextLink>
+          <div className="grow"></div>
+          <div>
+            <NextLink href="/cart" passHref>
+              <Link
+                sx={{ color: "white", fontSize: "18px", paddingRight: "15px" }}
+              >
+                Cart
+              </Link>
+            </NextLink>
+            <NextLink href="/login" passHref>
+              <Link sx={{ color: "white", fontSize: "18px" }}>Login</Link>
+            </NextLink>
+          </div>
         </Toolbar>
       </AppBar>
       <Container sx={{ minHeight: "80vh" }}>{children}</Container>
