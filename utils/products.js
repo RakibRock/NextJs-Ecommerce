@@ -2,8 +2,9 @@ const data = {
   products: [
     {
       name: "Free Shirt",
+      slug: "free-shirt",
       category: "shirts",
-      image: "Images/shirt1.jpg",
+      image: "/Images/shirt1.jpg",
       price: 70,
       brand: "Nike",
       rating: 4.5,
@@ -13,8 +14,9 @@ const data = {
     },
     {
       name: "Fit Shirt",
+      slug: "fit-shirt",
       category: "shirts",
-      image: "Images/shirt2.jpg",
+      image: "/Images/shirt2.jpg",
       price: 80,
       brand: "Adidas",
       rating: 4.2,
@@ -24,8 +26,9 @@ const data = {
     },
     {
       name: "Lazy Shirt",
+      slug: "lazy-shirt",
       category: "shirts",
-      image: "Images/shirt3.jpg",
+      image: "/Images/shirt3.jpg",
       price: 90,
       brand: "Puma",
       rating: 4.3,
@@ -35,8 +38,9 @@ const data = {
     },
     {
       name: "Fit Pants",
+      slug: "fit-pants",
       category: "pants",
-      image: "Images/pants1.jpg",
+      image: "/Images/pants1.jpg",
       price: 40,
       brand: "puma",
       rating: 4.7,
@@ -46,8 +50,9 @@ const data = {
     },
     {
       name: "Golf Pants",
+      slug: "golf-pants",
       category: "pants",
-      image: "Images/pants2.jpg",
+      image: "/Images/pants2.jpg",
       price: 50,
       brand: "Adidas",
       rating: 4.1,
@@ -57,8 +62,9 @@ const data = {
     },
     {
       name: "Biker Pants",
+      slug: "biker-pants",
       category: "zara",
-      image: "Images/pants3.jpg",
+      image: "/Images/pants3.jpg",
       price: 60,
       brand: "Nike",
       rating: 4.5,
