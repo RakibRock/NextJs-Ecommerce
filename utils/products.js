@@ -63,7 +63,7 @@ const data = {
     {
       name: "Biker Pants",
       slug: "biker-pants",
-      category: "zara",
+      category: "pants",
       image: "/Images/pants3.jpg",
       price: 60,
       brand: "Nike",
