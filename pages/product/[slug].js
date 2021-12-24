@@ -13,11 +13,12 @@ import Layout from "../../components/layout";
 import data from "../../utils/products";
 import NextLink from "next/link";
 import Image from "next/image";
+import Product from "../../models/Product";
+import db from "../../utils/db";
 
-const ProductScreen = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = data.products.find((a) => a.slug === slug);
+const ProductScreen = (props) => {
+  console.log(props);
+  const { product } = props;
   if (!product) {
     return <h1>Product not found</h1>;
   }
@@ -111,5 +112,19 @@ const ProductScreen = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+
+  return {
+    props: {
+      product: db.convertDocToObj(product),
+    },
+  };
+}
 
 export default ProductScreen;
