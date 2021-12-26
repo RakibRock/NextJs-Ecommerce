@@ -1,7 +1,10 @@
 import {
   Button,
+  Card,
   Grid,
   Link,
+  List,
+  ListItem,
   MenuItem,
   Select,
   Table,
@@ -17,6 +20,7 @@ import Layout from "../components/layout";
 import { Store } from "../utils/Store";
 import NextLink from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 const CartScreen = () => {
   const { state } = useContext(Store);
@@ -93,7 +97,22 @@ const CartScreen = () => {
             </TableContainer>
           </Grid>
           <Grid md={3} xs={12}>
-            cart actions
+            <Card sx={{ marginLeft: "20px", marginTop: "20px" }}>
+              <List>
+                <ListItem>
+                  <Typography variant="h6">
+                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}
+                    items) : $
+                    {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Button variant="contained" color="secondary" fullWidth>
+                    Check out
+                  </Button>
+                </ListItem>
+              </List>
+            </Card>
           </Grid>
         </Grid>
       )}
@@ -101,4 +120,4 @@ const CartScreen = () => {
   );
 };
 
-export default CartScreen;
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
