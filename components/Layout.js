@@ -83,7 +83,10 @@ const Layout = ({ title, description, children }) => {
                   }}
                 >
                   {cart.cartItems.length > 0 ? (
-                    <Badge color="red" badgeContent={cart.cartItems.length}>
+                    <Badge
+                      color="secondary"
+                      badgeContent={cart.cartItems.length}
+                    >
                       Cart
                     </Badge>
                   ) : (
