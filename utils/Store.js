@@ -6,7 +6,9 @@ export const Store = createContext();
 const initialState = {
   //   darkMode = Cookies.get('darkMode') ==='ON' ? true:false,
   cart: {
-    cartItems: [],
+    cartItems: Cookies.get("cartItems")
+      ? JSON.parse(Cookies.get("cartItems"))
+      : [],
   },
 };
 
@@ -28,6 +30,7 @@ function reducer(state, action) {
             item.name === existItem.name ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
+      Cookies.set("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
 
