@@ -21,6 +21,7 @@ import axios from "axios";
 const ProductScreen = (props) => {
   const { dispatch } = useContext(Store);
   const { product } = props;
+  const router = useRouter();
 
   const addToCartHandler = async () => {
     const { data } = await axios.get(`/api/products/${product._id}`);
@@ -29,6 +30,7 @@ const ProductScreen = (props) => {
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
+    router.push("/cart");
   };
 
   if (!product) {
