@@ -1,12 +1,25 @@
-import { Container, AppBar, Typography, Toolbar, Link } from "@mui/material";
+import {
+  Container,
+  AppBar,
+  Typography,
+  Toolbar,
+  Link,
+  Switch,
+  Badge,
+} from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Head from "next/head";
-import React from "react";
+import React, { useContext } from "react";
 import Footer from "./Footer/Footer";
 import NextLink from "next/link";
+import { Store } from "../utils/Store";
+import Cookies from "js-cookie";
 
 const Layout = ({ title, description, children }) => {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   const theme = createTheme({
     Typography: {
       h1: {
@@ -30,6 +43,12 @@ const Layout = ({ title, description, children }) => {
       },
     },
   });
+
+  // const darkModeChangeHandler = () => {
+  //   dispatch({ type: darkMode ? "DARK_MODE_OFF" : "DARK_MODE_ON" });
+  //   const newDarkMode = !darkMode;
+  //   Cookies.set("darkMode", newDarkMode ? "ON" : "OFF");
+  // };
   return (
     <div>
       <Head>
@@ -51,6 +70,10 @@ const Layout = ({ title, description, children }) => {
             </NextLink>
             <div className="grow"></div>
             <div>
+              <Switch
+              // checked={darkMode}
+              // onChange={darkModeChangeHandler}
+              ></Switch>
               <NextLink href="/cart" passHref>
                 <Link
                   sx={{
@@ -59,7 +82,13 @@ const Layout = ({ title, description, children }) => {
                     paddingRight: "15px",
                   }}
                 >
-                  Cart
+                  {cart.cartItems.length > 0 ? (
+                    <Badge color="red" badgeContent={cart.cartItems.length}>
+                      Cart
+                    </Badge>
+                  ) : (
+                    "Cart"
+                  )}
                 </Link>
               </NextLink>
               <NextLink href="/login" passHref>

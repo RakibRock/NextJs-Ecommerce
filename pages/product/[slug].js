@@ -8,17 +8,29 @@ import {
   Typography,
 } from "@mui/material";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../../components/layout";
 import data from "../../utils/products";
 import NextLink from "next/link";
 import Image from "next/image";
 import Product from "../../models/Product";
 import db from "../../utils/db";
+import { Store } from "../../utils/Store";
+import axios from "axios";
 
 const ProductScreen = (props) => {
-  console.log(props);
+  const { dispatch } = useContext(Store);
   const { product } = props;
+
+  const addToCartHandler = async () => {
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock <= 0) {
+      window.alert("Sorry product is out of stock");
+      return;
+    }
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
+  };
+
   if (!product) {
     return <h1>Product not found</h1>;
   }
@@ -101,7 +113,11 @@ const ProductScreen = (props) => {
                 </Grid>
               </ListItem>
               <ListItem>
-                <Button fullWidth variant="contained">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  onClick={addToCartHandler}
+                >
                   <Typography>Add to cart</Typography>
                 </Button>
               </ListItem>
